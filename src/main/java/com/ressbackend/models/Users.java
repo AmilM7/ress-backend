@@ -1,4 +1,4 @@
-package com.example.demo.models;
+package com.ressbackend.models;
 
 
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class User {
+public class Users {
     private long id;
     private String firstName;
     private String lastName;
