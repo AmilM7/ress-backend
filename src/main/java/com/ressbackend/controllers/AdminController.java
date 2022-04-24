@@ -1,6 +1,6 @@
-package com.example.demo.controllers;
-import com.example.demo.models.User;
-import com.example.demo.services.AdminService;
+package com.ressbackend.controllers;
+import com.ressbackend.models.Users;
+import com.ressbackend.services.AdminService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,32 +11,32 @@ import java.util.List;
 
         private final AdminService adminService;
 
-        public AdminController(AdminService itemService) {
-            this.adminService = itemService;
+        public AdminController(AdminService adminService) {
+            this.adminService = adminService;
         }
 
         @GetMapping
-        public List<User> getUsers() {
+        public List<Users> getUsers() {
             return adminService.getUsers();
         }
 
         @GetMapping("/{id}")
-        public User getUserById(@PathVariable long id) {
+        public Users getUserById(@PathVariable long id) {
             return adminService.getById(id);
         }
 
         @PutMapping("/update")
-        public User updateUser(@RequestBody User user) {
+        public Users updateUser(@RequestBody Users user) {
             return adminService.updateUser(user);
         }
 
         @PostMapping
-        public User createUser(@RequestBody User user) {
+        public Users createUser(@RequestBody Users user) {
             return adminService.createUser(user);
         }
 
         @DeleteMapping("/admin/{id}")
-        public User deleteUser(@PathVariable long id){
+        public Users deleteUser(@PathVariable long id){
             return adminService.deleteUser(id);
         }
     }

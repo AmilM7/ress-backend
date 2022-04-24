@@ -1,6 +1,6 @@
-package com.example.demo.services;
+package com.ressbackend.services;
 
-import com.example.demo.models.User;
+import com.ressbackend.models.Users;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class AdminService {
-    private final List<User> userList;
+    private final List<Users> userList;
 
     public AdminService() {
         userList = new ArrayList<>();
@@ -19,12 +19,12 @@ public class AdminService {
         userList.add(generateIrfan());
     }
 
-    public List<User> getUsers() {
+    public List<Users> getUsers() {
         return userList;
     }
 
-    public User getById(long id) {
-        for (User user : userList) {
+    public Users getById(long id) {
+        for (Users user : userList) {
             if(user.getId() == id) {
                 return user;
             }
@@ -32,8 +32,8 @@ public class AdminService {
         throw new RuntimeException("Value not found provided id:" + id);
     }
 
-    public User updateUser(User user) {
-        for (User currentUser: userList) {
+    public Users updateUser(Users user) {
+        for (Users currentUser: userList) {
             if(currentUser.getId()==user.getId()) {
                 currentUser.setId(user.getId());
                 currentUser.setFirstName(user.getFirstName());
@@ -46,7 +46,7 @@ public class AdminService {
 
     }
 
-    public User createUser(User user) {
+    public Users createUser(Users user) {
         long id = userList.size() + 1;
         user.setId(id);
         userList.add(user);
@@ -55,10 +55,10 @@ public class AdminService {
 
 
 
-    public User deleteUser(long id){
-        Iterator<User> iterator = userList.iterator();
+    public Users deleteUser(long id){
+        Iterator<Users> iterator = userList.iterator();
         while(iterator.hasNext()) {
-            User user=iterator.next();
+            Users user=iterator.next();
             if(user.getId()==id) {
                 iterator.remove();
                 return user;
@@ -67,8 +67,8 @@ public class AdminService {
         return null;
     }
 
-    private User generateAmar() {
-        User user = new User();
+    private Users generateAmar() {
+        Users user = new Users();
         user.setId(1);
         user.setFirstName("Amar");
         user.setLastName("Šoše");
@@ -76,8 +76,8 @@ public class AdminService {
         user.setPhone("061452975");
         return user;
     }
-    private User generateAmil() {
-        User user = new User();
+    private Users generateAmil() {
+        Users user = new Users();
         user.setId(2);
         user.setFirstName("Amil");
         user.setLastName("Murselović");
@@ -85,8 +85,8 @@ public class AdminService {
         user.setPhone("061354915");
         return user;
     }
-    private User generateMirza() {
-        User user = new User();
+    private Users generateMirza() {
+        Users user = new Users();
         user.setId(3);
         user.setFirstName("Mirza");
         user.setLastName("Arslanagic");
@@ -94,8 +94,8 @@ public class AdminService {
         user.setPhone("062451577");
         return user;
     }
-    private User generateIrfan() {
-        User user = new User();
+    private Users generateIrfan() {
+        Users user = new Users();
         user.setId(4);
         user.setFirstName("Irfan");
         user.setLastName("Parić");
