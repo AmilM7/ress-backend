@@ -78,7 +78,7 @@ public class RestaurantService {
         restaurant.setName("RES1");
         restaurant.setLocation("Juraja Cizme 8");
         restaurant.setNumOfAvailGuests(30);
-        restaurant.setNumOfAvailtables(10);
+        restaurant.setNumOfAvailTables(10);
         restaurant.setRessDescription("Vey good restaurant with perfect party");
         restaurant.setContactNum("061909786");
         restaurant.setContactManager("061999888");
@@ -96,7 +96,7 @@ public class RestaurantService {
         restaurant.setName("RES2");
         restaurant.setLocation("Juraja Asme 9");
         restaurant.setNumOfAvailGuests(20);
-        restaurant.setNumOfAvailtables(5);
+        restaurant.setNumOfAvailTables(5);
         restaurant.setRessDescription("Vey good restaurant with the best food in the town");
         restaurant.setContactNum("061909788");
         restaurant.setContactManager("061980888");

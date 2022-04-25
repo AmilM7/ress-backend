@@ -13,8 +13,8 @@ public class Restaurant {
     private long id;
     private String name;
     private String location;
-    private Integer numOfAvailGuests; /*Number of available Guests*/
-    private Integer numOfAvailtables;
+    private long numOfAvailGuests; /*Number of available Guests*/
+    private long numOfAvailTables;
     private String   ressDescription;
     private String contactNum;
     private LocalTime startHour;
