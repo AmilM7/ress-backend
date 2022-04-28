@@ -1,7 +1,9 @@
 package com.ressbackend.controllers;
+
 import com.ressbackend.models.Restaurant;
 import com.ressbackend.services.RestaurantService;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -36,12 +38,12 @@ public class RestaurantController {
     }
 
     @PostMapping
-    public Restaurant createRestaurant(@RequestBody Restaurant restaurant){
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
         return this.restaurantService.createRestaurant(restaurant);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRestaurant (@PathVariable long id) {
+    public String deleteRestaurant(@PathVariable long id) {
         return this.restaurantService.deleteById(id);
     }
 

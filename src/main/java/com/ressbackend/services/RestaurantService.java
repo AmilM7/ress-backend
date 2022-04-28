@@ -1,78 +1,68 @@
 package com.ressbackend.services;
+
 import com.ressbackend.models.Restaurant;
 import com.ressbackend.models.Type;
+import com.ressbackend.repositories.RestaurantRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 //Please be aware that names restaurants and catering facilities are used interchangeably
 @Service
 public class RestaurantService {
 
     private final List<Restaurant> restaurantList;
+    private final RestaurantRepository restaurantRepository;
 
-    public RestaurantService(List<Restaurant> restaurantList) {
+    public RestaurantService(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
         this.restaurantList = new ArrayList<>();
         this.restaurantList.add(generateRestaurant1());
         this.restaurantList.add(generateRestaurant2());
     }
 
-
     public List<Restaurant> getRestaurants() {
-        return this.restaurantList;
+        return restaurantRepository.findAll();
     }
 
     public Restaurant getById(long id) {
-        for (Restaurant restaurant: this.restaurantList) {
-            if (restaurant.getId() == id) {
-                return restaurant;
-            }
-        }
-        throw new RuntimeException("Value not find provided id"  + id);
+        Optional<Restaurant> restaurantOptional = restaurantRepository.findById(id);
+        if (restaurantOptional.isPresent()) return restaurantOptional.get();
+        throw new RuntimeException("Value not find with provided id: " + id);
     }
 
     public List<Restaurant> getOnlyClubs() {
         List<Restaurant> clubList = new ArrayList<>();
-        for (Restaurant club: this.restaurantList) {
-            if (club.getType()==Type.club) {
+        for (Restaurant club : this.restaurantList) {
+            if (club.getType() == Type.club) {
                 clubList.add(club);
             }
         }
-        return  clubList;
+        return clubList;
     }
 
     public List<Restaurant> getByLocation(String location) {
         List<Restaurant> list = new ArrayList<>();
-        for (Restaurant restaurant: this.restaurantList) {
+        for (Restaurant restaurant : this.restaurantList) {
             if (restaurant.getLocation().equals(location)) {
                 list.add(restaurant);
             }
         }
-        return  list;
+        return list;
     }
 
-    public Restaurant createRestaurant(Restaurant restaurant){
-        long id = this.restaurantList.size()+1;
-        restaurant.setId(id);
-        this.restaurantList.add(restaurant);
-        return restaurant;
+    public Restaurant createRestaurant(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
     }
 
-    public String deleteById (long id) {
-        for (Restaurant restaurant: this.restaurantList) {
-            if (restaurant.getId()==id) {
-                this.restaurantList.remove(restaurant);
-            }
-        }
+    public String deleteById(long id) {
+        this.restaurantList.removeIf(restaurant -> restaurant.getId() == id);
         return "Restaurant with number ID " + id + " deleted.";
     }
 
-
-
-
-
-    private Restaurant generateRestaurant1 (){
+    private Restaurant generateRestaurant1() {
         Restaurant restaurant = new Restaurant();
         restaurant.setId(1);
         restaurant.setName("RES1");
@@ -82,15 +72,15 @@ public class RestaurantService {
         restaurant.setRessDescription("Vey good restaurant with perfect party");
         restaurant.setContactNum("061909786");
         restaurant.setContactManager("061999888");
-        restaurant.setStartTime(10,0,0);
-        restaurant.setEndTime(23,0,0);
+        restaurant.setStartTime(10, 0, 0);
+        restaurant.setEndTime(23, 0, 0);
         restaurant.setEmail("employee1@restaurant1.com");
         restaurant.setType(Type.club);
         restaurant.setPassword("Password123");
         return restaurant;
     }
 
-    private Restaurant generateRestaurant2 (){
+    private Restaurant generateRestaurant2() {
         Restaurant restaurant = new Restaurant();
         restaurant.setId(2);
         restaurant.setName("RES2");
@@ -100,8 +90,8 @@ public class RestaurantService {
         restaurant.setRessDescription("Vey good restaurant with the best food in the town");
         restaurant.setContactNum("061909788");
         restaurant.setContactManager("061980888");
-        restaurant.setStartTime(9,0,0);
-        restaurant.setEndTime(10,0,0);
+        restaurant.setStartTime(9, 0, 0);
+        restaurant.setEndTime(10, 0, 0);
         restaurant.setEmail("employee2@restaurant2.com");
         restaurant.setType(Type.restaurant);
         restaurant.setPassword("Password123");
