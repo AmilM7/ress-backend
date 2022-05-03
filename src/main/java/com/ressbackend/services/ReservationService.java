@@ -1,22 +1,17 @@
 package com.ressbackend.services;
 
 import com.ressbackend.models.Reservation;
-import com.ressbackend.repositories.ReservationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReservationService {
 
     private final List<Reservation> resultList;
 
-    private final ReservationRepository reservationRepository;
-
-    public ReservationService(ReservationRepository reservationRepository){
-        this.reservationRepository = reservationRepository;
+    public ReservationService(){
         resultList = new ArrayList<>();
         resultList.add(generateReservation1());
         resultList.add(generateReservation2());
@@ -25,7 +20,7 @@ public class ReservationService {
     }
 
     public List<Reservation> getReservation(){
-        return reservationRepository.findAll();
+        return resultList;
     }
 
     public List<Reservation> getByDay(String day){
@@ -52,20 +47,24 @@ public class ReservationService {
     }
 
     public Reservation getById(long id){
-        Optional<Reservation> reservationOptional = reservationRepository.findById(id);
-        if (reservationOptional.isPresent()){
-            return reservationOptional.get();
+        for (Reservation reservation : resultList){
+            if (reservation.getId() == id){
+                return reservation;
+            }
         }
         throw new RuntimeException("There is no restaurant with wanted id!");
     }
 
 
     public Reservation createReservation(Reservation reservation) {
-        return reservationRepository.save(reservation);
+        long id = resultList.size() + 1;
+        reservation.setId(id);
+        resultList.add(reservation);
+        return reservation;
     }
 
     public void deleteReservation(long id){
-        reservationRepository.deleteById(id);
+        resultList.removeIf(reservation -> reservation.getId() == id);
     }
 
     private Reservation generateReservation1() {
@@ -76,7 +75,6 @@ public class ReservationService {
         reservation.setDay("Monday");
         reservation.setTime(12);
         reservation.setUserFirstName("Amar");
-        reservation.setUserLastName("Sose");
         return reservation;
     }
 
@@ -88,7 +86,6 @@ public class ReservationService {
         reservation.setDay("Monday");
         reservation.setTime(14);
         reservation.setUserFirstName("Amar");
-        reservation.setUserLastName("Sose");
         return reservation;
     }
 
@@ -100,7 +97,6 @@ public class ReservationService {
         reservation.setDay("Wednesday");
         reservation.setTime(12);
         reservation.setUserFirstName("Amil");
-        reservation.setUserLastName("Murselovic");
         return reservation;
     }
 
@@ -112,7 +108,6 @@ public class ReservationService {
         reservation.setDay("Friday");
         reservation.setTime(13);
         reservation.setUserFirstName("Mirza");
-        reservation.setUserLastName("Arslanagic");
         return reservation;
     }
 
