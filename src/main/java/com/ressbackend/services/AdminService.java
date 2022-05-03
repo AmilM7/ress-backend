@@ -1,17 +1,22 @@
 package com.ressbackend.services;
 
 import com.ressbackend.models.Users;
+import com.ressbackend.repositories.AdminRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
     private final List<Users> userList;
+    private final AdminRepository adminRepository;
 
-    public AdminService() {
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+        this.createUser(generateAmil());
         userList = new ArrayList<>();
         userList.add(generateAmar());
         userList.add(generateAmil());
@@ -20,16 +25,13 @@ public class AdminService {
     }
 
     public List<Users> getUsers() {
-        return userList;
+        return adminRepository.findAll();
     }
 
     public Users getById(long id) {
-        for (Users user : userList) {
-            if(user.getId() == id) {
-                return user;
-            }
-        }
-        throw new RuntimeException("Value not found provided id:" + id);
+        Optional<Users> adminOptional = adminRepository.findById(id);
+        if (adminOptional.isPresent()) return adminOptional.get();
+        throw new RuntimeException("Value not find with provided id: " + id);
     }
 
     public Users updateUser(Users user) {
@@ -43,17 +45,11 @@ public class AdminService {
             }
         }
         return user;
-
     }
 
     public Users createUser(Users user) {
-        long id = userList.size() + 1;
-        user.setId(id);
-        userList.add(user);
-        return user;
+        return adminRepository.save(user);
     }
-
-
 
     public Users deleteUser(long id){
         Iterator<Users> iterator = userList.iterator();
