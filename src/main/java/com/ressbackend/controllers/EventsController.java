@@ -25,21 +25,24 @@ public class EventsController {
     public List<Event> getEvents () {
         return this.eventService.getEvents();
     }
+
     @GetMapping("/id/{id}")
-    public Event getSpecificEvent (@PathVariable int id){
-        return this.eventService.getSpecificEvent(id);
+    public Event getEvent(@PathVariable int id) {return this.eventService.getById(id);}
+
+
+    @GetMapping("/type/clubs")
+    public List<Event> getClubs(){
+        return this.eventService.getOnlyClubs();
     }
 
-    @GetMapping("/date/{date}")
-    public Event getDate (@PathVariable int date){
-        return this.eventService.getDate(date);
-    }
+
     @PostMapping
-    public Event createPerson (@RequestBody Event event){
+    public Event createEvent (@RequestBody Event event){
         return this.eventService.createEvent(event);
     }
+
     @DeleteMapping("/delete/{id}")
-    public Event deleteEvent(@PathVariable long id){
+    public Event deleteEvent(@PathVariable int id){
         eventService.deleteEvent(id);
         return null;
     }
