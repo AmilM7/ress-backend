@@ -1,5 +1,6 @@
 package com.ressbackend.services;
 
+import com.ressbackend.models.Approval;
 import com.ressbackend.models.Reservation;
 import com.ressbackend.repositories.ReservationRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class ReservationService {
         resultList.add(generateReservation2());
         resultList.add(generateReservation3());
         resultList.add(generateReservation4());
+
     }
 
     public List<Reservation> getReservation(){
@@ -77,6 +79,7 @@ public class ReservationService {
         reservation.setTime(12);
         reservation.setUserFirstName("Amar");
         reservation.setUserLastName("Sose");
+        reservation.setApproval(Approval.pending);
         return reservation;
     }
 
@@ -89,6 +92,7 @@ public class ReservationService {
         reservation.setTime(14);
         reservation.setUserFirstName("Amar");
         reservation.setUserLastName("Sose");
+        reservation.setApproval(Approval.denied);
         return reservation;
     }
 
@@ -101,6 +105,7 @@ public class ReservationService {
         reservation.setTime(12);
         reservation.setUserFirstName("Amil");
         reservation.setUserLastName("Murselovic");
+        reservation.setApproval(Approval.approved);
         return reservation;
     }
 
@@ -113,6 +118,7 @@ public class ReservationService {
         reservation.setTime(13);
         reservation.setUserFirstName("Mirza");
         reservation.setUserLastName("Arslanagic");
+        reservation.setApproval(Approval.pending);
         return reservation;
     }
 

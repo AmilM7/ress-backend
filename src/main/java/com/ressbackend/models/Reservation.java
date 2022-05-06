@@ -35,4 +35,8 @@ public class Reservation extends User {
 
     @Column(name = "user_last_name")
     private String userLastName = User.lastName;
+
+    @Column(name = "approval")
+    @Enumerated(value = EnumType.STRING)
+    private Approval approval;
 }
