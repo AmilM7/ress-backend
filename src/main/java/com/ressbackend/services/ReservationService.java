@@ -56,7 +56,7 @@ public class ReservationService {
         if (reservationOptional.isPresent()){
             return reservationOptional.get();
         }
-        throw new RuntimeException("There is no restaurant with wanted id!");
+        throw new RuntimeException("Value not find with provided id: " + id);
     }
 
 
