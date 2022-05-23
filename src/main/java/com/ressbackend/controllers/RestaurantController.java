@@ -19,34 +19,33 @@ public class RestaurantController {
 
     @GetMapping()
     public List<Restaurant> getRestaurants() {
-        return this.restaurantService.getRestaurants();
+        return restaurantService.getRestaurants();
     }
 
     @GetMapping("/{id}")
     public Restaurant getRestaurant(@PathVariable long id) {
-        return this.restaurantService.getById(id);
+        return restaurantService.getById(id);
     }
 
     @GetMapping("/clubs")
     public List<Restaurant> getClubs() {
-        return this.restaurantService.getOnlyClubs();
+        return restaurantService.getOnlyClubs();
     }
 
     @GetMapping("/location/{location}")
     public List<Restaurant> getByLocation(@PathVariable String location) {
-        return this.restaurantService.getByLocation(location);
+        return restaurantService.getByLocation(location);
     }
 
     @PostMapping
     public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-        return this.restaurantService.createRestaurant(restaurant);
+        return restaurantService.createRestaurant(restaurant);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRestaurant(@PathVariable long id) {
-        return this.restaurantService.deleteById(id);
+    public void  deleteRestaurant(@PathVariable long id) {
+        restaurantService.deleteById(id);
     }
-
 
 }
 
