@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: ${APPLICATON_PORT:8080}
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ress_database
-    username: postgres
-    password: 123494
+    url: jdbc:postgresql://${APP_DB_URL:localhost}:${APP_DB_PORT:5432}/${NAME_APP_DB:ress_database}
+    username: ${DB_USER_NAME:postgres}
+    password: ${DB_USER_PASSWORD:123494}
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,3 +15,7 @@ spring:
   data:
     jpa:
       repositories.enabled: true
+
+service:
+  ui:
+    url: ${FRONTEND-API-URL:http://localhost:4200}

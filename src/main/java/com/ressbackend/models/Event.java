@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,10 +21,10 @@ public class Event {
     private int id;
 
     @Column(name = "restaurant_name")
-    private String restaurant_name;
+    private String restaurantName;
 
     @Column(name = "event_name")
-    private String event_name;
+    private String eventName;
 
     @Column(name = "date")
     private int date;

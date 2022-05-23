@@ -3,6 +3,7 @@ package com.ressbackend.services;
 import com.ressbackend.models.Restaurant;
 import com.ressbackend.models.Type;
 import com.ressbackend.repositories.RestaurantRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,32 +35,18 @@ public class RestaurantService {
     }
 
     public List<Restaurant> getOnlyClubs() {
-        List<Restaurant> clubList = new ArrayList<>();
-        for (Restaurant club : this.restaurantList) {
-            if (club.getType() == Type.club) {
-                clubList.add(club);
-            }
-        }
-        return clubList;
+        return restaurantRepository.findRestaurantsByType(String.valueOf(Type.club));
     }
 
     public List<Restaurant> getByLocation(String location) {
-        List<Restaurant> list = new ArrayList<>();
-        for (Restaurant restaurant : this.restaurantList) {
-            if (restaurant.getLocation().equals(location)) {
-                list.add(restaurant);
-            }
-        }
-        return list;
+        return restaurantRepository.findRestaurantsByLocation(location);
     }
 
     public Restaurant createRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
-
-    public String deleteById(long id) {
-        this.restaurantList.removeIf(restaurant -> restaurant.getId() == id);
-        return "Restaurant with number ID " + id + " deleted.";
+    public void deleteById(long id) {
+        restaurantRepository.deleteById(id);
     }
 
     private Restaurant generateRestaurant1() {
