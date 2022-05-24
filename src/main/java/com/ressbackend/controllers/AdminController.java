@@ -25,9 +25,9 @@ import java.util.List;
             return adminService.getById(id);
         }
 
-        @PutMapping("/update")
-        public Users updateUser(@RequestBody Users user) {
-            return adminService.updateUser(user);
+        @PutMapping("/update/{id}")
+        public Users updateUser(@RequestBody Users user, @PathVariable long id) {
+            return adminService.updateUser(user,id);
         }
 
         @PostMapping
@@ -36,8 +36,8 @@ import java.util.List;
         }
 
         @DeleteMapping("/admin/{id}")
-        public Users deleteUser(@PathVariable long id){
-            return adminService.deleteUser(id);
+        public void deleteUser(@PathVariable long id){
+            adminService.deleteUser(id);
         }
     }
 

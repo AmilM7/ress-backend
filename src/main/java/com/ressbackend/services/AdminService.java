@@ -1,5 +1,6 @@
 package com.ressbackend.services;
 
+import com.ressbackend.models.Reservation;
 import com.ressbackend.models.Users;
 import com.ressbackend.repositories.AdminRepository;
 import org.springframework.stereotype.Service;
@@ -34,33 +35,42 @@ public class AdminService {
         throw new RuntimeException("Value not find with provided id: " + id);
     }
 
-    public Users updateUser(Users user) {
-        for (Users currentUser: userList) {
-            if(currentUser.getId()==user.getId()) {
-                currentUser.setId(user.getId());
-                currentUser.setFirstName(user.getFirstName());
-                currentUser.setLastName(user.getLastName());
-                currentUser.setEmail(user.getEmail());
-                currentUser.setPhone(user.getPhone());
+    public List<Users> getByFirstName(String firstName){
+        List<Users> firstNameList = new ArrayList<>();
+        for (Users user : userList){
+            if(user.getFirstName().equals(firstName)){
+                firstNameList.add(user);
             }
         }
-        return user;
+        if (firstNameList.size()==0) throw new RuntimeException("There is no user by that first name!");
+        else return firstNameList;
+
+    }
+
+    public List<Users> getByLastName(String lastName){
+        List<Users> lastNameList = new ArrayList<>();
+        for (Users user : userList){
+            if(user.getLastName().equals(lastName)){
+                lastNameList.add(user);
+            }
+        }
+        if (lastNameList.size()==0) throw new RuntimeException("There is no user by that last name!");
+        else return lastNameList;
+
+    }
+
+    public Users updateUser(Users user, long id) {
+        getById(id);
+        user.setId(id);
+        return adminRepository.save(user);
     }
 
     public Users createUser(Users user) {
         return adminRepository.save(user);
     }
 
-    public Users deleteUser(long id){
-        Iterator<Users> iterator = userList.iterator();
-        while(iterator.hasNext()) {
-            Users user=iterator.next();
-            if(user.getId()==id) {
-                iterator.remove();
-                return user;
-            }
-        }
-        return null;
+    public void deleteUser(long id){
+        adminRepository.deleteById(id);
     }
 
     private Users generateAmar() {
