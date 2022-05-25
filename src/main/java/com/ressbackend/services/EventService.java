@@ -56,10 +56,6 @@ public class EventService {
         return eventRespository.save(event);
     }
 
-    public String deleteEvent(int id) {
-        this.finallist.removeIf(event -> event.getId() == id);
-        return "Event with number ID " + id + " deleted.";
-    }
 
     private Event generateEvent1() {
         Event event = new Event();
