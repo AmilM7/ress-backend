@@ -42,9 +42,5 @@ public class EventsController {
         return this.eventService.createEvent(event);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Event deleteEvent(@PathVariable int id) {
-        eventService.deleteEvent(id);
-        return null;
-    }
+
 }
