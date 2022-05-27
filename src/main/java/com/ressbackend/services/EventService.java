@@ -42,14 +42,20 @@ public class EventService {
         return finallist;
     }
 
+    public List<Event> getOnlyRestaurants() {
+        List<Event> finallist = new ArrayList<>();
+        for (Event restaurant : this.finallist) {
+            if (restaurant.getType() == Type.restaurant) {
+                finallist.add(restaurant);
+            }
+        }
+        return finallist;
+    }
+
     public Event createEvent(Event event) {
         return eventRespository.save(event);
     }
 
-    public String deleteEvent(int id) {
-        this.finallist.removeIf(event -> event.getId() == id);
-        return "Event with number ID " + id + " deleted.";
-    }
 
     private Event generateEvent1() {
         Event event = new Event();
