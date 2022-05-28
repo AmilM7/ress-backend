@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Reservation extends User {
+public class Reservation{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -30,11 +30,10 @@ public class Reservation extends User {
     @Column(name = "day")
     private String day;
 
-    @Column(name = "user_first_name")
-    private String userFirstName = User.firstName;
+    @ManyToOne
+    @JoinColumn(name = "admin", referencedColumnName = "id")
+    private Users user;
 
-    @Column(name = "user_last_name")
-    private String userLastName = User.lastName;
 
     @Column(name = "approval")
     @Enumerated(value = EnumType.STRING)

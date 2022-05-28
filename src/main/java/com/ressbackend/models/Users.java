@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "admin")
@@ -30,4 +31,8 @@ public class Users {
 
     @Column(name = "phone")
     private String phone;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "admin")
+    private List<Users> admin;
+
 }

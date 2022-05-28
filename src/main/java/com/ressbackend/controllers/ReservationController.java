@@ -31,11 +31,6 @@ public class ReservationController {
         return this.reservationService.getByDay(day);
     }
 
-    @RequestMapping(value="/username/{name}", method = RequestMethod.GET)
-    public List<Reservation> getReservationByUsername(@PathVariable String name){
-        return this.reservationService.getByUsername(name);
-    }
-
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
         return reservationService.createReservation(reservation);

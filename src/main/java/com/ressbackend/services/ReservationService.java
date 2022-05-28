@@ -41,18 +41,6 @@ public class ReservationService {
         return dayList;
     }
 
-    public List<Reservation> getByUsername(String name){
-        List<Reservation> usernameList = new ArrayList<>();
-        for (Reservation reservation : resultList){
-            if(reservation.getUserFirstName().equals(name)){
-                usernameList.add(reservation);
-            }
-        }
-        if (usernameList.size()==0) throw new RuntimeException("There is no reservations on that User!");
-        else return usernameList;
-
-    }
-
     public Reservation getById(long id){
         Optional<Reservation> reservationOptional = reservationRepository.findById(id);
         if (reservationOptional.isPresent()){
@@ -77,8 +65,6 @@ public class ReservationService {
         reservation.setTableId(1);
         reservation.setDay("Monday");
         reservation.setTime(12);
-        reservation.setUserFirstName("Amar");
-        reservation.setUserLastName("Sose");
         reservation.setApproval(Approval.pending);
         return reservation;
     }
@@ -90,8 +76,6 @@ public class ReservationService {
         reservation.setTableId(13);
         reservation.setDay("Monday");
         reservation.setTime(14);
-        reservation.setUserFirstName("Amar");
-        reservation.setUserLastName("Sose");
         reservation.setApproval(Approval.denied);
         return reservation;
     }
@@ -103,8 +87,6 @@ public class ReservationService {
         reservation.setTableId(5);
         reservation.setDay("Wednesday");
         reservation.setTime(12);
-        reservation.setUserFirstName("Amil");
-        reservation.setUserLastName("Murselovic");
         reservation.setApproval(Approval.approved);
         return reservation;
     }
@@ -116,8 +98,6 @@ public class ReservationService {
         reservation.setTableId(18);
         reservation.setDay("Friday");
         reservation.setTime(13);
-        reservation.setUserFirstName("Mirza");
-        reservation.setUserLastName("Arslanagic");
         reservation.setApproval(Approval.pending);
         return reservation;
     }
