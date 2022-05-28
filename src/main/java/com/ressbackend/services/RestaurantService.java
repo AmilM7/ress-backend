@@ -43,6 +43,7 @@ public class RestaurantService {
     }
 
     public Restaurant createRestaurant(Restaurant restaurant) {
+        restaurant.setAccepted(false);
         return restaurantRepository.save(restaurant);
     }
     public void deleteById(long id) {

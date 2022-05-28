@@ -51,6 +51,9 @@ public class Restaurant {
     @Column(name = "contactManager")
     private String contactManager;
 
+    @Column(name = "isAccepted")
+    private boolean isAccepted;
+
     @Column(name = "type")
     @Enumerated(value = EnumType.STRING)
     private Type type;

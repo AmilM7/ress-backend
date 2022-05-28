@@ -34,7 +34,6 @@ public class Reservation{
     @JoinColumn(name = "admin", referencedColumnName = "id")
     private Users user;
 
-
     @Column(name = "approval")
     @Enumerated(value = EnumType.STRING)
     private Approval approval;
