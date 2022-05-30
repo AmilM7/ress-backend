@@ -17,7 +17,6 @@ public class AdminService {
 
     public AdminService(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
-        this.createUser(generateAmil());
         userList = new ArrayList<>();
         userList.add(generateAmar());
         userList.add(generateAmil());
