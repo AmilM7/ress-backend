@@ -34,6 +34,10 @@ public class Reservation{
     @JoinColumn(name = "admin", referencedColumnName = "id")
     private Users user;
 
+    @ManyToOne
+    @JoinColumn(name = "restaurant", referencedColumnName = "id")
+    private Restaurant restaurant;
+
 
     @Column(name = "approval")
     @Enumerated(value = EnumType.STRING)
