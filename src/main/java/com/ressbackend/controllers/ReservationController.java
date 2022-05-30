@@ -36,6 +36,11 @@ public class ReservationController {
         return reservationService.createReservation(reservation);
     }
 
+    @PostMapping("/update/{id}")
+    public Reservation updateReservation(@PathVariable long id, String value) {
+        return reservationService.updateReservation(id, value);
+    }
+
     @DeleteMapping("/{id}")
     public Reservation deleteReservation(@PathVariable long id){
         reservationService.deleteReservation(id);
