@@ -50,6 +50,10 @@ public class RestaurantService {
         restaurantRepository.deleteById(id);
     }
 
+    public List<Restaurant> findNotAcceptedRestaurants (){
+        return restaurantRepository.findRestaurantsByIsAccepted(false);
+    }
+
     private Restaurant generateRestaurant1() {
         Restaurant restaurant = new Restaurant();
         restaurant.setId(1);

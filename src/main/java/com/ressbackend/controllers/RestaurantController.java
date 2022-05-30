@@ -32,6 +32,12 @@ public class RestaurantController {
         return restaurantService.getOnlyClubs();
     }
 
+    @GetMapping("/notAccepted")
+    public List<Restaurant> getUnAccepted(){
+        return restaurantService.findNotAcceptedRestaurants();
+    }
+
+
     @GetMapping("/location/{location}")
     public List<Restaurant> getByLocation(@PathVariable String location) {
         return restaurantService.getByLocation(location);
