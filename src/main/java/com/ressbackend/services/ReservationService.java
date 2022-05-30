@@ -13,7 +13,6 @@ import java.util.Optional;
 public class ReservationService {
 
     private final List<Reservation> resultList;
-
     private final ReservationRepository reservationRepository;
 
     public ReservationService(ReservationRepository reservationRepository){
@@ -26,19 +25,16 @@ public class ReservationService {
 
     }
 
+    public List<Reservation> getReservationByTableId (long idUsera){
+        return reservationRepository.findReservationsByTableId(idUsera);
+    }
+
     public List<Reservation> getReservation(){
         return reservationRepository.findAll();
     }
 
     public List<Reservation> getByDay(String day){
-        List<Reservation> dayList = new ArrayList<>();
-        for (Reservation reservation : resultList){
-            if(reservation.getDay().equals(day)){
-                dayList.add(reservation);
-            }
-        }
-        if (dayList.size()==0) throw new RuntimeException("There is no reservations on that Day!");
-        return dayList;
+        return reservationRepository.findReservationsByDay(day);
     }
 
     public Reservation getById(long id){
