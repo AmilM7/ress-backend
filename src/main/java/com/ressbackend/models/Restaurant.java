@@ -45,7 +45,7 @@ public class Restaurant {
     @Column(name = "endHour")
     private LocalTime endHour;
 
-    @Column(name = "email")
+    @Column(name = "email", unique=true)
     private String email;
 
     @Column(name = "contactManager")
