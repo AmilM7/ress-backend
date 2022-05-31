@@ -1,9 +1,9 @@
 package com.ressbackend.controllers;
 
 import com.ressbackend.models.Restaurant;
+import com.ressbackend.models.Users;
 import com.ressbackend.services.RestaurantService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -37,6 +37,11 @@ public class RestaurantController {
         return restaurantService.findNotAcceptedRestaurants();
     }
 
+    @PutMapping("/update/{email}")
+    public Restaurant updateRestaurant(@RequestBody Restaurant restaurant, @PathVariable String email) {
+        restaurant.setAccepted(true);
+        return restaurantService.updateRestauranttoAccepted(restaurant,email);
+    }
 
     @GetMapping("/location/{location}")
     public List<Restaurant> getByLocation(@PathVariable String location) {
@@ -48,10 +53,12 @@ public class RestaurantController {
         return restaurantService.createRestaurant(restaurant);
     }
 
-    @DeleteMapping("/{id}")
-    public void  deleteRestaurant(@PathVariable long id) {
-        restaurantService.deleteById(id);
+    @DeleteMapping("/delete/{email}")
+    public void deleteRestaurant (@PathVariable String email){
+        Restaurant restaurant = restaurantService.getByEmail(email);
+        restaurantService.deleteById(restaurant.getId());
     }
+
 
 }
 
