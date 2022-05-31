@@ -54,12 +54,9 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
-    public Reservation updateReservation(long id, String value) {
-        Reservation reservation = reservationRepository.getById(id);
-        if (value.equals("approved"))
-            reservation.setApproval(Approval.approved);
-        else
-            reservation.setApproval(Approval.denied);
+    public Reservation updateReservation(long id, Reservation reservation) {
+        getById(id);
+        reservation.setId(id);
         return reservationRepository.save(reservation);
     }
 
