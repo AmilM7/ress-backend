@@ -13,23 +13,33 @@ public class ReservationController {
 
     private final ReservationService reservationService;
 
-    public ReservationController(ReservationService reservationService){
+    public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
     @GetMapping
-    public List<Reservation> getReservation(){
+    public List<Reservation> getReservation() {
         return reservationService.getReservation();
     }
 
     @GetMapping("/{id}")
-    public Reservation getReservation(@PathVariable long id){
+    public Reservation getReservation(@PathVariable long id) {
         return this.reservationService.getById(id);
     }
 
     @RequestMapping(value="/day/{day}", method = RequestMethod.GET)
     public List<Reservation> getReservationByDay(@PathVariable String day){
-        return this.reservationService.getByDay(day);
+    return this.reservationService.getByDay(day);
+    }
+        
+    @GetMapping("/userID/{id}")
+    public List<Reservation> getReservationByUserID(@PathVariable long id) {
+        return reservationService.getReservationByUser(id);
+    }
+
+    @GetMapping("/restaurantID/{id}")
+    public List<Reservation> getReservationByRestaurantID(@PathVariable long id) {
+        return reservationService.getReservationByRestaurant(id);
     }
 
     @PostMapping
@@ -50,7 +60,7 @@ public class ReservationController {
     }
 
     @DeleteMapping("/{id}")
-    public Reservation deleteReservation(@PathVariable long id){
+    public Reservation deleteReservation(@PathVariable long id) {
         reservationService.deleteReservation(id);
         return null;
     }

@@ -15,7 +15,7 @@ public class ReservationService {
     private final List<Reservation> resultList;
     private final ReservationRepository reservationRepository;
 
-    public ReservationService(ReservationRepository reservationRepository){
+    public ReservationService(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
         resultList = new ArrayList<>();
         resultList.add(generateReservation1());
@@ -25,17 +25,25 @@ public class ReservationService {
 
     }
 
-    public List<Reservation> getReservation(){
+    public List<Reservation> getReservation() {
         return reservationRepository.findAll();
     }
 
-    public List<Reservation> getByDay(String day){
+    public List<Reservation> getReservationByUser(long idUser) {
+        return reservationRepository.findReservationByUser_Id(idUser);
+    }
+
+    public List<Reservation> getReservationByRestaurant(long idRestaurant) {
+        return reservationRepository.findReservationByRestaurant_Id(idRestaurant);
+    }
+
+    public List<Reservation> getByDay(String day) {
         return reservationRepository.findReservationsByDay(day);
     }
 
-    public Reservation getById(long id){
+    public Reservation getById(long id) {
         Optional<Reservation> reservationOptional = reservationRepository.findById(id);
-        if (reservationOptional.isPresent()){
+        if (reservationOptional.isPresent()) {
             return reservationOptional.get();
         }
         throw new RuntimeException("Value not find with provided id: " + id);
@@ -52,7 +60,7 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
-    public void deleteReservation(long id){
+    public void deleteReservation(long id) {
         reservationRepository.deleteById(id);
     }
 
