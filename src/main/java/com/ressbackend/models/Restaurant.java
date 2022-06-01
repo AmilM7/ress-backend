@@ -45,11 +45,14 @@ public class Restaurant {
     @Column(name = "endHour")
     private LocalTime endHour;
 
-    @Column(name = "email")
+    @Column(name = "email", unique=true)
     private String email;
 
     @Column(name = "contactManager")
     private String contactManager;
+
+    @Column(name = "isAccepted")
+    private boolean isAccepted;
 
     @Column(name = "type")
     @Enumerated(value = EnumType.STRING)

@@ -27,6 +27,11 @@ public class ReservationController {
         return this.reservationService.getById(id);
     }
 
+    @GetMapping("/getSpecificUserReservationbyTableId/{id}")
+    public List<Reservation> getSpecificReservation(@PathVariable long id)  {
+        return this.reservationService.getReservationByTableId(id);
+    }
+
     @RequestMapping(value="/day/{day}", method = RequestMethod.GET)
     public List<Reservation> getReservationByDay(@PathVariable String day){
         return this.reservationService.getByDay(day);
