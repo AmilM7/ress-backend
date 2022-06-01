@@ -25,10 +25,6 @@ public class ReservationService {
 
     }
 
-    public List<Reservation> getReservationByTableId (long idUsera){
-        return reservationRepository.findReservationsByTableId(idUsera);
-    }
-
     public List<Reservation> getReservation(){
         return reservationRepository.findAll();
     }
