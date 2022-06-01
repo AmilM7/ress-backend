@@ -1,5 +1,6 @@
 package com.ressbackend.controllers;
 
+import com.ressbackend.models.Approval;
 import com.ressbackend.models.Reservation;
 import com.ressbackend.services.ReservationService;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class ReservationController {
     }
 
     @GetMapping("/{id}")
-    public Reservation getRestaurant(@PathVariable long id){
+    public Reservation getReservation(@PathVariable long id){
         return this.reservationService.getById(id);
     }
 
@@ -39,6 +40,18 @@ public class ReservationController {
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
         return reservationService.createReservation(reservation);
+    }
+
+    @PutMapping("/update/{id}")
+    public Reservation updateReservationApproved(@PathVariable long id, @RequestBody Reservation reservation) {
+        reservation.setApproval(Approval.approved);
+        return reservationService.updateReservation(id, reservation);
+    }
+
+    @PutMapping("/update2/{id}")
+    public Reservation updateReservationDenied(@PathVariable long id, @RequestBody Reservation reservation) {
+        reservation.setApproval(Approval.denied);
+        return reservationService.updateReservation(id, reservation);
     }
 
     @DeleteMapping("/{id}")

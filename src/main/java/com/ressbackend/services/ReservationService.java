@@ -50,6 +50,12 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
+    public Reservation updateReservation(long id, Reservation reservation) {
+        getById(id);
+        reservation.setId(id);
+        return reservationRepository.save(reservation);
+    }
+
     public void deleteReservation(long id){
         reservationRepository.deleteById(id);
     }

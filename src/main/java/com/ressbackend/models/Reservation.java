@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="reservation")
@@ -29,6 +30,9 @@ public class Reservation{
 
     @Column(name = "day")
     private String day;
+
+    @Column(name = "date")
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "admin", referencedColumnName = "id")
