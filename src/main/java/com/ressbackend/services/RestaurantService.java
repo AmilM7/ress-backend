@@ -40,27 +40,37 @@ public class RestaurantService {
     public List<Restaurant> getByLocation(String location) {
         return restaurantRepository.findRestaurantsByLocation(location);
     }
+
     public Restaurant getByEmail(String email) {
         return restaurantRepository.findRestaurantByEmail(email);
     }
 
+    public List<Restaurant> getMostlyReservedRestaurants () {
+        return restaurantRepository.findMostlyReservedRestaurants();
+    }
+
+    public List<Restaurant> getSugesstedRestaurants(){
+        return restaurantRepository.findThreeSugesstedRestaurants();
+    }
     public Restaurant createRestaurant(Restaurant restaurant) {
         restaurant.setAccepted(false);
         return restaurantRepository.save(restaurant);
     }
+
     public void deleteById(long id) {
         restaurantRepository.deleteById(id);
     }
 
-    public List<Restaurant> findNotAcceptedRestaurants (){
+    public List<Restaurant> getNotAcceptedRestaurants() {
         return restaurantRepository.findRestaurantsByIsAccepted(false);
     }
 
-    public Restaurant updateRestauranttoAccepted(Restaurant restaurant, String  email){
+    public Restaurant updateRestauranttoAccepted(Restaurant restaurant, String email) {
         getByEmail(email);
         restaurant.setAccepted(true);
         return restaurantRepository.save(restaurant);
     }
+
 
     private Restaurant generateRestaurant1() {
         Restaurant restaurant = new Restaurant();
