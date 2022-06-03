@@ -4,6 +4,7 @@ import com.ressbackend.models.Restaurant;
 import com.ressbackend.models.Users;
 import com.ressbackend.services.RestaurantService;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -33,19 +34,29 @@ public class RestaurantController {
     }
 
     @GetMapping("/notAccepted")
-    public List<Restaurant> getUnAccepted(){
-        return restaurantService.findNotAcceptedRestaurants();
+    public List<Restaurant> getUnAccepted() {
+        return restaurantService.getNotAcceptedRestaurants();
     }
 
-    @PutMapping("/update/{email}")
-    public Restaurant updateRestaurant(@RequestBody Restaurant restaurant, @PathVariable String email) {
-        restaurant.setAccepted(true);
-        return restaurantService.updateRestauranttoAccepted(restaurant,email);
+    @GetMapping("/mostlyReserved")
+    public List<Restaurant> getMostlyReservedRestaurants() {
+        return restaurantService.getMostlyReservedRestaurants();
+    }
+
+    @GetMapping("/suggested")
+    public List<Restaurant> getSuggestedRestaurants() {
+        return restaurantService.getSugesstedRestaurants();
     }
 
     @GetMapping("/location/{location}")
     public List<Restaurant> getByLocation(@PathVariable String location) {
         return restaurantService.getByLocation(location);
+    }
+
+    @PutMapping("/update/{email}")
+    public Restaurant updateRestaurant(@RequestBody Restaurant restaurant, @PathVariable String email) {
+        restaurant.setAccepted(true);
+        return restaurantService.updateRestauranttoAccepted(restaurant, email);
     }
 
     @PostMapping
@@ -54,7 +65,7 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/delete/{email}")
-    public void deleteRestaurant (@PathVariable String email){
+    public void deleteRestaurant(@PathVariable String email) {
         Restaurant restaurant = restaurantService.getByEmail(email);
         restaurantService.deleteById(restaurant.getId());
     }
