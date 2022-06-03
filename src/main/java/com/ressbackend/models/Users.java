@@ -32,5 +32,8 @@ public class Users {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "password")
+    private String password;
+
 
 }

@@ -1,12 +1,10 @@
 package com.ressbackend.services;
 
-import com.ressbackend.models.Reservation;
 import com.ressbackend.models.Users;
 import com.ressbackend.repositories.AdminRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +56,7 @@ public class AdminService {
 
     }
 
-    public Users updateUser(Users user, long id) {
+    public Users updateUser(long id, Users user) {
         getById(id);
         user.setId(id);
         return adminRepository.save(user);
