@@ -145,7 +145,7 @@ public class AdminServiceUnitTest {
         Mockito.when(adminRepository.save(input))
                 .thenReturn(output);
 
-        Users resultItem = adminService.updateUser(input, id);
+        Users resultItem = adminService.updateUser(id, input);
 
         assertThat(resultItem).isNotNull();
         assertThat(resultItem.getFirstName()).isEqualTo(input.getFirstName());

@@ -1,4 +1,6 @@
 package com.ressbackend.controllers;
+import com.ressbackend.models.Approval;
+import com.ressbackend.models.Reservation;
 import com.ressbackend.models.Users;
 import com.ressbackend.services.AdminService;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +30,8 @@ import java.util.List;
         }
 
         @PutMapping("/update/{id}")
-        public Users updateUser(@RequestBody Users user, @PathVariable long id) {
-            return adminService.updateUser(user,id);
+        public Users updateUser(@PathVariable long id, @RequestBody Users user) {
+            return adminService.updateUser(id, user);
         }
 
         @PostMapping

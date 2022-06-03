@@ -70,7 +70,6 @@ public class ReservationService {
         reservation.setNumberOfGuests(5);
         reservation.setTableId(1);
         reservation.setDay("Monday");
-        reservation.setTime(12);
         reservation.setApproval(Approval.pending);
         return reservation;
     }
@@ -81,7 +80,6 @@ public class ReservationService {
         reservation.setNumberOfGuests(4);
         reservation.setTableId(13);
         reservation.setDay("Monday");
-        reservation.setTime(14);
         reservation.setApproval(Approval.denied);
         return reservation;
     }
@@ -92,7 +90,6 @@ public class ReservationService {
         reservation.setNumberOfGuests(6);
         reservation.setTableId(5);
         reservation.setDay("Wednesday");
-        reservation.setTime(12);
         reservation.setApproval(Approval.approved);
         return reservation;
     }
@@ -103,7 +100,6 @@ public class ReservationService {
         reservation.setNumberOfGuests(2);
         reservation.setTableId(18);
         reservation.setDay("Friday");
-        reservation.setTime(13);
         reservation.setApproval(Approval.pending);
         return reservation;
     }
