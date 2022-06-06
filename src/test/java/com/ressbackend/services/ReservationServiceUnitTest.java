@@ -85,7 +85,7 @@ public class ReservationServiceUnitTest {
         verify(reservationRepository, times(1)).deleteById(id);
     }
 
-<<<<<<< HEAD
+
 
     @Test
     public void givenValidReservationDay_whenGetByDay_thenReservationShouldBeFound() {
@@ -94,25 +94,6 @@ public class ReservationServiceUnitTest {
         List<Reservation> returnedList = reservationService.getByDay("Monday");
         assertThat(returnedList).hasSize(2);
     }
-=======
-//    @Test
-//    public void givenValidReservationUsername_whenGetByUsername_thenReservationShouldBeFound() {
-//        Mockito.when(reservationRepository.findReservationsByUsername("Amil"))
-//                .thenReturn(List.of(ReservationTest.reservation()));
-//        List<Reservation> returnedList = reservationService.getByUsername("Amil");
-//        assertThat(returnedList).hasSize(1);
-//    }
-//
-//    @Test
-//    public void givenValidReservationDay_whenGetByDay_thenReservationShouldBeFound() {
-//        Mockito.when(reservationRepository.findReservationsByDay("Monday"))
-//                .thenReturn(List.of(ReservationTest.reservation()));
-//        List<Reservation> returnedList = reservationService.getByDay("Monday");
-//        assertThat(returnedList).hasSize(2);
-//    }
->>>>>>> 4225222 (Added JWT token for user)
-
-
 
 }
 

@@ -15,10 +15,10 @@ public class AdminService {
     private final AdminRepository adminRepository;
     private final PasswordEncoder passwordEncoder;
     public AdminService(AdminRepository adminRepository, PasswordEncoder passwordEncoder) {
-        this.adminRepository = adminRepository;
 
+
+        this.adminRepository = adminRepository;
         this.passwordEncoder = passwordEncoder;
-        this.createUser(generateAmil());
 
         userList = new ArrayList<>();
         userList.add(generateAmar());
