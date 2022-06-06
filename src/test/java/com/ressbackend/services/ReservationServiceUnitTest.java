@@ -86,6 +86,7 @@ public class ReservationServiceUnitTest {
     }
 
 
+
     @Test
     public void givenValidReservationDay_whenGetByDay_thenReservationShouldBeFound() {
         Mockito.when(reservationRepository.findReservationsByDay("Monday"))
@@ -93,8 +94,6 @@ public class ReservationServiceUnitTest {
         List<Reservation> returnedList = reservationService.getByDay("Monday");
         assertThat(returnedList).hasSize(2);
     }
-
-
 
 }
 

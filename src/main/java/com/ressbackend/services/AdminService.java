@@ -2,6 +2,7 @@ package com.ressbackend.services;
 
 import com.ressbackend.models.Users;
 import com.ressbackend.repositories.AdminRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,9 +13,13 @@ import java.util.Optional;
 public class AdminService {
     private final List<Users> userList;
     private final AdminRepository adminRepository;
+    private final PasswordEncoder passwordEncoder;
+    public AdminService(AdminRepository adminRepository, PasswordEncoder passwordEncoder) {
 
-    public AdminService(AdminRepository adminRepository) {
+
         this.adminRepository = adminRepository;
+        this.passwordEncoder = passwordEncoder;
+
         userList = new ArrayList<>();
         userList.add(generateAmar());
         userList.add(generateAmil());
@@ -63,6 +68,7 @@ public class AdminService {
     }
 
     public Users createUser(Users user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return adminRepository.save(user);
     }
 
@@ -77,6 +83,7 @@ public class AdminService {
         user.setLastName("Šoše");
         user.setEmail("amar.sose@stu.ssst.edu.ba");
         user.setPhone("061452975");
+        user.setPassword("Qwert12345");
         return user;
     }
     private Users generateAmil() {
@@ -86,6 +93,7 @@ public class AdminService {
         user.setLastName("Murselović");
         user.setEmail("amil.murselovic@stu.ssst.edu.ba");
         user.setPhone("061354915");
+        user.setPassword("Qwert12345");
         return user;
     }
     private Users generateMirza() {
@@ -95,6 +103,7 @@ public class AdminService {
         user.setLastName("Arslanagic");
         user.setEmail("mirza.arslanagic@stu.ssst.edu.ba");
         user.setPhone("062451577");
+        user.setPassword("Qwert12345");
         return user;
     }
     private Users generateIrfan() {
@@ -104,6 +113,7 @@ public class AdminService {
         user.setLastName("Parić");
         user.setEmail("irfan.paric@stu.ssst.edu.ba");
         user.setPhone("062654187");
+        user.setPassword("Qwert12345");
         return user;
     }
 
