@@ -11,4 +11,6 @@ public interface AdminRepository extends JpaRepository<Users, Long> {
     List<Users> findUsersByFirstName(String firstName);
 
     List<Users> findUsersByLastName(String lastName);
+
+    Users findFirstByEmail(String username);
 }
