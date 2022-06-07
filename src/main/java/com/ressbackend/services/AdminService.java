@@ -37,6 +37,11 @@ public class AdminService {
         throw new RuntimeException("Value not find with provided id: " + id);
     }
 
+    public Users getByEmaill (String email){
+        Users users = adminRepository.findByEmail(email);
+        return  users;
+    }
+
     public List<Users> getByFirstName(String firstName){
         List<Users> firstNameList = new ArrayList<>();
         for (Users user : userList){

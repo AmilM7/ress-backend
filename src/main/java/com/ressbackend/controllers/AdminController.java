@@ -3,6 +3,7 @@ import com.ressbackend.models.Approval;
 import com.ressbackend.models.Reservation;
 import com.ressbackend.models.Users;
 import com.ressbackend.services.AdminService;
+import com.ressbackend.util.JwtUtil;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
     public class AdminController {
 
         private final AdminService adminService;
+        private final JwtUtil jwtTokenUtil;
 
-        public AdminController(AdminService adminService) {
+        public AdminController(AdminService adminService, JwtUtil jwtTokenUtil) {
             this.adminService = adminService;
+            this.jwtTokenUtil = jwtTokenUtil;
         }
 
         @GetMapping
@@ -22,7 +25,13 @@ import java.util.List;
             return adminService.getUsers();
         }
 
-
+     /*   @GetMapping("/whoami")
+        public Users getUser (RequestHeader(name = 'Authorization') String token){
+            String email = jwtTokenUtil.extractUsername(token.substring(7));
+            Users users = adminService.getByEmaill(email);
+            return users;
+        }
+*/
 
         @GetMapping("/{id}")
         public Users getUserById(@PathVariable long id) {
