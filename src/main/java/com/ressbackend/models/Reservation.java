@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -24,7 +25,7 @@ public class Reservation{
     private long numberOfGuests;
 
     @Column(name = "time")
-    private long time;
+    private LocalTime time;
 
     @Column(name = "table_id")
     private long tableId;
@@ -33,7 +34,7 @@ public class Reservation{
     private String day;
 
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "description")
     private String description;

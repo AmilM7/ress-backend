@@ -44,6 +44,7 @@ public class ReservationController {
 
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
+        reservation.setApproval(Approval.pending);
         return reservationService.createReservation(reservation);
     }
 
