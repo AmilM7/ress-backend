@@ -13,7 +13,6 @@ public class ReservationTest {
         reservation.setDay("Monday");
         reservation.setTableId(57L);
         reservation.setNumberOfGuests(3L);
-        reservation.setTime(12L);
         return reservation;
     }
 
@@ -23,7 +22,6 @@ public class ReservationTest {
         reservation.setDay("Wednesday");
         reservation.setTableId(30L);
         reservation.setNumberOfGuests(2L);
-        reservation.setTime(13L);
         return reservation;
     }
 
