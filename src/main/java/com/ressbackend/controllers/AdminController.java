@@ -13,25 +13,15 @@ import java.util.List;
     public class AdminController {
 
         private final AdminService adminService;
-        private final JwtUtil jwtTokenUtil;
 
         public AdminController(AdminService adminService, JwtUtil jwtTokenUtil) {
             this.adminService = adminService;
-            this.jwtTokenUtil = jwtTokenUtil;
         }
 
         @GetMapping
         public List<Users> getUsers() {
             return adminService.getUsers();
         }
-
-     /*   @GetMapping("/whoami")
-        public Users getUser (RequestHeader(name = 'Authorization') String token){
-            String email = jwtTokenUtil.extractUsername(token.substring(7));
-            Users users = adminService.getByEmaill(email);
-            return users;
-        }
-*/
 
         @GetMapping("/{id}")
         public Users getUserById(@PathVariable long id) {
