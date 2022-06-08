@@ -28,4 +28,4 @@ Several enviroment variables are used in application.yml file regarding the data
 **token-duration-minutes: ${TOKEN_DURATION_MINUTES:600}**.\
 
 **Running and deployment**\
-This application is deployed on Heroku from where requests are comming. Application is running in IntelliJ IDEA 2021.3.3 using run button.
+This application is deployed on Heroku from where requests are comming. 
