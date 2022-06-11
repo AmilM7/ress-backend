@@ -19,7 +19,7 @@ public class ReservationController {
 
     @GetMapping
     public List<Reservation> getReservation() {
-        return reservationService.getReservation();
+        return reservationService.getReservations();
     }
 
     @GetMapping("/{id}")
@@ -27,11 +27,11 @@ public class ReservationController {
         return this.reservationService.getById(id);
     }
 
-    @RequestMapping(value="/day/{day}", method = RequestMethod.GET)
-    public List<Reservation> getReservationByDay(@PathVariable String day){
-    return this.reservationService.getByDay(day);
+    @RequestMapping(value = "/day/{day}", method = RequestMethod.GET)
+    public List<Reservation> getReservationByDay(@PathVariable String day) {
+        return this.reservationService.getByDay(day);
     }
-        
+
     @GetMapping("/userID/{id}")
     public List<Reservation> getReservationByUserID(@PathVariable long id) {
         return reservationService.getReservationByUser(id);

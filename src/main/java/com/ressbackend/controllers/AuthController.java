@@ -3,7 +3,6 @@ package com.ressbackend.controllers;
 
 import com.ressbackend.models.dtos.AuthenticationRequestPayload;
 import com.ressbackend.models.dtos.AuthenticationResponsePayload;
-import com.ressbackend.services.UserDetailsService;
 import com.ressbackend.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
     private final JwtUtil jwtTokenUtil;
 
     @PostMapping("/authenticate")

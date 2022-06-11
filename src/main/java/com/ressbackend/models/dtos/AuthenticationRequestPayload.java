@@ -1,6 +1,5 @@
 package com.ressbackend.models.dtos;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

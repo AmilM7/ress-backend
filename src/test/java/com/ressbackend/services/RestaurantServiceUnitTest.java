@@ -1,11 +1,11 @@
 package com.ressbackend.services;
+
 import com.ressbackend.data.RestaurantTest;
 import com.ressbackend.models.Restaurant;
 import com.ressbackend.models.Type;
 import com.ressbackend.repositories.RestaurantRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -13,8 +13,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.List;
 import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.times;
@@ -126,15 +128,6 @@ public class RestaurantServiceUnitTest {
         List<Restaurant> returnedList = restaurantService.getByLocation("JurajaCizme100");
         assertThat(returnedList).hasSize(1);
     }
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
-
 import javax.persistence.*;
 
 @Entity
@@ -21,14 +20,14 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name", unique=true)
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "location")
     private String location;
 
     @Column(name = "numOfAvailGuests")
-    private long numOfAvailGuests; /*Number of available Guests*/
+    private long numOfAvailGuests;
 
     @Column(name = "numOfAvailTables")
     private long numOfAvailTables;
@@ -45,7 +44,7 @@ public class Restaurant {
     @Column(name = "endHour")
     private LocalTime endHour;
 
-    @Column(name = "email", unique=true)
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "contactManager")
@@ -69,8 +68,6 @@ public class Restaurant {
 
     public void setEndTime(int hours, int minutes, int seconds) {
         this.endHour = LocalTime.of(hours, minutes, seconds);
-
-
     }
 }
 

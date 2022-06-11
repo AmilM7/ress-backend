@@ -1,7 +1,6 @@
 package com.ressbackend.controllers;
 
 import com.ressbackend.models.Restaurant;
-import com.ressbackend.models.Users;
 import com.ressbackend.services.RestaurantService;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +37,11 @@ public class RestaurantController {
         return restaurantService.getNotAcceptedRestaurants();
     }
 
+    @GetMapping("/accepted")
+    public List<Restaurant> getAccepted() {
+        return restaurantService.getAcceptedRestaurants();
+    }
+
     @GetMapping("/mostlyReserved")
     public List<Restaurant> getMostlyReservedRestaurants() {
         return restaurantService.getMostlyReservedRestaurants();
@@ -51,6 +55,11 @@ public class RestaurantController {
     @GetMapping("/location/{location}")
     public List<Restaurant> getByLocation(@PathVariable String location) {
         return restaurantService.getByLocation(location);
+    }
+
+    @GetMapping("name/{name}")
+    public Restaurant getByName(@PathVariable String name) {
+        return restaurantService.getByName(name);
     }
 
     @PutMapping("/update/{email}")
@@ -69,8 +78,6 @@ public class RestaurantController {
         Restaurant restaurant = restaurantService.getByEmail(email);
         restaurantService.deleteById(restaurant.getId());
     }
-
-
 }
 
 

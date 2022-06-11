@@ -26,7 +26,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     }
 
     public SimpleUser getUserByEmail(String userEmail) {
-        getFullUserByEmail(userEmail); // user exists?
+        getFullUserByEmail(userEmail);
         return new SimpleUser(userEmail);
     }
 

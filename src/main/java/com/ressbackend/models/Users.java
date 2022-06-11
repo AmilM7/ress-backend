@@ -1,13 +1,10 @@
 package com.ressbackend.models;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "admin")
@@ -26,15 +23,12 @@ public class Users {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "email", unique=true)
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "phone")
     private String phone;
 
-
     @Column(name = "password")
     private String password;
-
-
 }

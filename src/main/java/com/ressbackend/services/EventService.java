@@ -11,15 +11,11 @@ import java.util.Optional;
 
 @Service
 public class EventService {
-    private List<Event> finallist;
-    private EventRespository eventRespository;
 
+    private EventRespository eventRespository;
 
     public EventService(EventRespository eventRespository) {
         this.eventRespository = eventRespository;
-        this.finallist = new ArrayList<>();
-        this.finallist.add(generateEvent1());
-        this.finallist.add(generateEvent2());
     }
 
     public List<Event> getEvents() {
@@ -30,26 +26,6 @@ public class EventService {
         Optional<Event> eventOptional = eventRespository.findById(id);
         if (eventOptional.isPresent()) return eventOptional.get();
         throw new RuntimeException("Value not found with provided id: " + id);
-    }
-
-    public List<Event> getOnlyClubs() {
-        List<Event> finallist = new ArrayList<>();
-        for (Event club : this.finallist) {
-            if (club.getType() == Type.club) {
-                finallist.add(club);
-            }
-        }
-        return finallist;
-    }
-
-    public List<Event> getOnlyRestaurants() {
-        List<Event> finallist = new ArrayList<>();
-        for (Event restaurant : this.finallist) {
-            if (restaurant.getType() == Type.restaurant) {
-                finallist.add(restaurant);
-            }
-        }
-        return finallist;
     }
 
     public Event createEvent(Event event) {

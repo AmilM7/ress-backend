@@ -74,24 +74,4 @@ public class EventServiceUnitTest {
         eventService.createEvent(event);
         verify(eventRespository, times(1)).save(event);
     }
-
-    @Test
-    public void givenClubs_whenGetOnlyClubs_thenListShouldBeFound(){
-        Mockito.when(eventRespository.findEventByType(String.valueOf(Type.club)))
-                .thenReturn(List.of(EventTest.event2()));
-        List<Event> finalList = eventService.getOnlyClubs();
-        assertThat(finalList).hasSize(1);
-
-    }
-
-    @Test
-    public void givenRestaurants_whenGetOnlyRestaurants_thenListShouldBeFound(){
-        Mockito.when(eventRespository.findEventByType(String.valueOf(Type.restaurant)))
-                .thenReturn(List.of(EventTest.event()));
-        List<Event> finalList = eventService.getOnlyRestaurants();
-        assertThat(finalList).hasSize(1);
-
-    }
-
-
 }

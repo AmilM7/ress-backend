@@ -1,11 +1,8 @@
 package com.ressbackend.controllers;
 
-
 import com.ressbackend.models.Event;
 import com.ressbackend.services.EventService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,7 +11,6 @@ import java.util.List;
 public class EventsController {
 
     private final EventService eventService;
-    private List<Event> finallist = new ArrayList<>();
 
     public EventsController(EventService eventService) {
         this.eventService = eventService;
@@ -30,17 +26,8 @@ public class EventsController {
         return this.eventService.getById(id);
     }
 
-
-    @GetMapping("/type/clubs")
-    public List<Event> getClubs() {
-        return this.eventService.getOnlyClubs();
-    }
-
-
     @PostMapping
     public Event createEvent(@RequestBody Event event) {
         return this.eventService.createEvent(event);
     }
-
-
 }
