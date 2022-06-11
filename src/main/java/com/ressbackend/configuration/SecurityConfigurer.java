@@ -37,7 +37,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
                 .cors().and()
 
-                .authorizeRequests().antMatchers("/authenticate", "/admin", "/restaurants/**", "/reservations/**", "/restaurants/notAccepted/**").permitAll()
+                .authorizeRequests().antMatchers("/authenticate", "/admin", "/admin/**", "/restaurants/**", "/reservations/**", "/restaurants/notAccepted/**", "/restaurants/update/**").permitAll()
 
                 .anyRequest().authenticated()
 
