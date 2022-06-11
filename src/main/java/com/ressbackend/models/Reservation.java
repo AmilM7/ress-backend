@@ -8,15 +8,15 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
+
 
 @Entity
-@Table(name="reservation")
+@Table(name = "reservation")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Reservation{
+public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

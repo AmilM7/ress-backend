@@ -1,4 +1,5 @@
 package com.ressbackend.services;
+
 import com.ressbackend.data.ReservationTest;
 import com.ressbackend.models.Reservation;
 import com.ressbackend.repositories.ReservationRepository;
@@ -11,7 +12,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.times;
@@ -42,13 +45,13 @@ public class ReservationServiceUnitTest {
         Mockito.when(reservationRepository.findAll())
                 .thenReturn(List.of(ReservationTest.reservation()));
 
-        List<Reservation> returnedList = reservationService.getReservation();
+        List<Reservation> returnedList = reservationService.getReservations();
         assertThat(returnedList).hasSize(1);
     }
 
     @Test
     public void givenNoReservations_whenGetReservations_thenListShouldBeEmpty() {
-        assertThat(reservationService.getReservation()).isEmpty();
+        assertThat(reservationService.getReservations()).isEmpty();
     }
 
 
@@ -83,16 +86,6 @@ public class ReservationServiceUnitTest {
         long id = 2L;
         reservationService.deleteReservation(id);
         verify(reservationRepository, times(1)).deleteById(id);
-    }
-
-
-
-    @Test
-    public void givenValidReservationDay_whenGetByDay_thenReservationShouldBeFound() {
-        Mockito.when(reservationRepository.findReservationsByDay("Monday"))
-                .thenReturn(List.of(ReservationTest.reservation()));
-        List<Reservation> returnedList = reservationService.getByDay("Monday");
-        assertThat(returnedList).hasSize(2);
     }
 
 }

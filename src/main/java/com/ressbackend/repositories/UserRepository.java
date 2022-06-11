@@ -1,6 +1,4 @@
 package com.ressbackend.repositories;
-
-
 import com.ressbackend.models.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 

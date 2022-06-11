@@ -21,7 +21,7 @@ import java.security.SecureRandom;
 
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService UserDetailsService; // create class
+    private final UserDetailsService UserDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
@@ -37,7 +37,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
                 .cors().and()
 
-            .authorizeRequests().antMatchers("/authenticate", "/admin", "/restaurants/**", "/reservations/**", "/restaurants/notAccepted/**").permitAll()
+                .authorizeRequests().antMatchers("/authenticate", "/admin", "/restaurants/**", "/reservations/**", "/restaurants/notAccepted/**").permitAll()
 
                 .anyRequest().authenticated()
 
@@ -54,8 +54,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
     @Bean
-    public PasswordEncoder passwordEncoder () {
-        return new BCryptPasswordEncoder(12, new SecureRandom());} // create interface
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12, new SecureRandom());
+    }
 }
 
