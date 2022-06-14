@@ -1,6 +1,6 @@
 # RESS backend
 
-**Instalation**
+##Instalation
 
 Backend part of this application is initialized using Spring  Initializr using the following link: https://start.spring.io/ where name of project, description of project and package chosen as Jar were stated. Type of project is Maven Project and selected language is Java. Moreover, it is unnecessary to use Java vesrion 17. \
 Next step is to add two dependencies: *Spring Web* which uses REST and Tomcat as a default embedded server and pulls in all dependencies related to web development. Second dependency is *Lombok* which helps to reduce boilerplate code. \
@@ -10,7 +10,7 @@ After clonning the repository, open the pom.xml file in the IDE and confirm to o
 Click the run/debug icon or Shift+F10 on the keyboard. \
 The application is running in your browser at localhost:8080. 
 
-**Enviroment variables**
+##Enviroment variables
 
 Several enviroment variables are used in application.yml file regarding the database: \
 *on server*: **port: ${APPLICATON_PORT:8080}** which runs application on port 8080 \
